@@ -22,6 +22,9 @@ include_once 'headerfooter/header.php';
 	<br><br>
 	<img src="pdf-icon.jpg" class="img-thumbnail" alt="pdficon" width="50" height="50">
 	<a href="KingPins.readme.pdf">PDF KINGPINS APPLICATION DOCUMENTATION</a>
+	<br><br>
+	<img src="GitHub-Mark.png" class="img-thumbnail" alt="githubicon" width="50" height="50">
+	<a href="https://github.com/KedarRam/KingPins">GITHUB Repository for Application Code</a>
  </div>
 </div>
 
