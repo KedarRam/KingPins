@@ -47,6 +47,10 @@ include_once 'partials/partialProfile.php';
     <input type="text" name="phone" class="form-control" id="phoneField" value="<?php if(isset($phone)) echo $phone; ?>"/>
     </div>
     <div class="form-group">
+    <label for="defaultgroupField">Default Group</label>
+    <input type="text" name="defaultgroup" class="form-control" id="defaultgroupField" readonly value="<?php if(isset($defaultgroup)) echo $defaultgroup; ?>"/>
+    </div>
+    <div class="form-group">
     <label for="joinField">Join Date</label>
     <input type="text" name="joindate" class="form-control" id="joindateField" readonly value="<?php if(isset($date_joined)) echo $date_joined; ?>"/>
     </div>

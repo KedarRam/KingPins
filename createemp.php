@@ -68,6 +68,7 @@ if(isset($_POST['CreateBtn'])){
     $lastname=trim($_POST['lastname']);
     $email=trim($_POST['email']);
     $phone=trim($_POST['phone']);
+    $defaultgroup=trim($_POST['defaultgroup']);
     $isActive=$_POST['isActive'];
     $isManager=$_POST['isManager'];
 
@@ -83,10 +84,10 @@ if(isset($_POST['CreateBtn'])){
 
         try{
 
-        $sqlInsert = "INSERT INTO employee (username,password,firstname,lastname,email,phone,joindate,isActive,isManager)
-        VALUES(:username,:password,:firstname,:lastname,:email,:phone,now(),:isActive,:isManager)";
+        $sqlInsert = "INSERT INTO employee (username,password,firstname,lastname,email,phone,defaultgroup,joindate,isActive,isManager)
+        VALUES(:username,:password,:firstname,:lastname,:email,:phone,:defaultgroup,now(),:isActive,:isManager)";
         $statement = $db->prepare($sqlInsert);
-        $statement->execute(array(':username' => $username,':password' => $hashed_password, ':firstname' => $firstname, ':lastname' => $lastname, ':email' => $email, ':phone' => $phone, ':isActive' => $isActive, ':isManager' => $isManager));
+        $statement->execute(array(':username' => $username,':password' => $hashed_password, ':firstname' => $firstname, ':lastname' => $lastname, ':email' => $email, ':phone' => $phone, ':defaultgroup' => $defaultgroup, ':isActive' => $isActive, ':isManager' => $isManager));
 
         if($statement->rowCount() == 0){
             $result = "<ul style='color: red;'>Unable to create employee</ul>";
@@ -148,6 +149,18 @@ if(isset($_POST['CreateBtn'])){
   <label for="phoneField">Phone (xxx-xxx-xxxx):</label>
    <input type="text"  name="phone" class="form-control" id="phone" value=""></input>
    </div>
+  <div class="form-group">
+  <label for="defaultgroupField">Default Group</label>
+  <div class="selectContainer">
+      <select class="form-control" name="defaultgroup">
+          <option value="">Choose a group</option>
+          <option value="0">Vacation</option>
+          <option value="1">Group 1 - Tue and Fri off; Sat-Sun 11AM-3PM, Mon,Wed,Thur 7PM-11PM</option>
+          <option value="2">Group 2 - Mon and Thu off; Tue-Wed,Fri-Sun 3PM-7PM</option>
+          <option value="3">Group 3 - Sun and Wed off; Mon and Thu 3PM-7PM, Tue and Fri-Sat 7PM-11PM</option>
+  </select>
+  </div>
+  </div>
    <div class="form-group">
    <label for="activeField">Is Active Employee:</label>
    <input type="radio" id="Yes" name="isActive" value=1 checked>Active</input>
