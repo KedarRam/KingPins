@@ -36,6 +36,7 @@ if((isset($_SESSION['id']) || isset($_GET['user_identity'])) && !isset($_POST['u
         $lastname = strtoupper($rs['lastname']);
         $email = $rs['email'];
         $phone = $rs['phone'];
+        $defaultgroup = $rs['defaultgroup'];
         $phone_cur = $rs['phone'];
         $date_joined = strftime("%b %d, %Y", strtotime($rs['joindate']));
     }

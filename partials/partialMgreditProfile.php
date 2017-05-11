@@ -42,6 +42,7 @@ if((isset($_SESSION['id']) || isset($_GET['user_identity'])) && !isset($_POST['u
         $username_cur = $rs['username'];
         $email_cur = $rs['email'];
         $phone_cur = $rs['phone'];
+	    $defaultgroup_cur = $rs['defaultgroup'];
         $joindate_cur = strftime("%b %d, %Y", strtotime($rs['joindate']));
         $isManager_cur = $rs['isManager'];
         $isActive_cur = $rs['isActive'];
@@ -83,6 +84,7 @@ if((isset($_SESSION['id']) || isset($_GET['user_identity'])) && !isset($_POST['u
     $email = $_POST['email_disp'];
     $username = $_POST['username_disp'];
     $phone = $_POST['phone_disp'];
+    $defaultgroup = $_POST['defaultgroup_disp'];
     $isManager = intval($_POST['isManager_disp']);
   
     $isActive = intval($_POST['isActive_disp']);
@@ -113,6 +115,9 @@ if((isset($_SESSION['id']) || isset($_GET['user_identity'])) && !isset($_POST['u
     }elseif ($phone != $phone_cur){
        
         $change = 1;
+    }elseif ($defaultgroup != $defaultgroup_cur){
+    
+        $change = 1;
     }elseif ($isActive != $isActive_cur){
       
         $change = 1;
@@ -134,10 +139,10 @@ if(empty($form_errors)){
    if ($change == 1){
     try{
 
-        $sqlUpdate = "UPDATE employee SET username =:username ,email =:email, phone =:phone, isActive =:isActive, isManager =:isManager, joindate =:joindate, updatedate=now() WHERE id =:id";
+        $sqlUpdate = "UPDATE employee SET username =:username ,email =:email, phone =:phone, defaultgroup =:defaultgroup, isActive =:isActive, isManager =:isManager, joindate =:joindate, updatedate=now() WHERE id =:id";
                                         
         $statement = $db->prepare($sqlUpdate);
-        $statement->execute(array(':username' => $username, ':email' => $email, ':phone' => $phone, ':isActive' => $isActive, ':isManager' => $isManager, ':joindate' => $joindate, ':id' => $id_cur));
+        $statement->execute(array(':username' => $username, ':email' => $email, ':phone' => $phone, ':defaultgroup' => $defaultgroup, ':isActive' => $isActive, ':isManager' => $isManager, ':joindate' => $joindate, ':id' => $id_cur));
 
         if($statement->rowCount() == 1){
             $_SESSION['id'] = $id;
