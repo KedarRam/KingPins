@@ -98,6 +98,10 @@ include_once 'partials/partialMgreditProfile.php'; //edit an employee
   <label for="phoneField">Phone</label>
   <input type="text" name="phone_disp" class="form-control" id="phoneField" value="<?php if(isset($phone_disp)) echo $phone_disp; ?>">
   </div>
+  <div class="form-group">
+  <label for="defaultgroupField">Default Group</label>
+  <input type="text" name="defaultgroup_disp" class="form-control" id="defaultgroupField" value="<?php if(isset($defaultgroup_disp)) echo $defaultgroup_disp; ?>">
+  </div>
    <div class="form-group">
   <label for="joindateField">Join Date</label>
   <input type="text" name="joindate_disp" class="form-control" id="joindateField" value="<?php if(isset($date_joined_disp)) echo $date_joined_disp; ?>">
